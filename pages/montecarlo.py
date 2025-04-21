@@ -17,5 +17,6 @@ for i in range(1000):
         iteration.append(sum(demand))
 
 fig, ax = plt.subplots()
-sns.histplot(demand, bins=30, kde=True, ax=ax)
+color = st.color_picker("Pick a color", "#00f900")
+sns.histplot(demand, bins=30, kde=True, color=color, ax=ax)
 st.write(fig)
