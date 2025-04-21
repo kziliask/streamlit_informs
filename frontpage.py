@@ -15,13 +15,14 @@ with c1:
     name = st.text_input("Enter your name:")
 with c2:
     message = st.text_input("Enter your message:")
+row = [name, message]
 if st.button("Submit"):
+    with open("messages.csv", "a", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(row)
     st.success("Your message has been submitted!")
     st.balloons()
-row = [name, message]
-with open("messages.csv", "a", newline="") as f:
-    writer = csv.writer(f)
-    writer.writerow(row)
+
 df = pd.read_csv("messages.csv", names=["Name", "Message"])
 st.write(df)
 st.audio_input(label="Say something")
